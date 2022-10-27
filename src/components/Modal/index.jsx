@@ -5,10 +5,8 @@ import Slices from "../../assets/img/slices-sm.png";
 import Button from "../Button";
 
 const Modal = ({ setOpen, open, title }) => {
-  const stake = false;
-  const claim = false;
-  const unStake = false;
-  console.log(title);
+  const [count, setCount] = React.useState(4);
+
   return (
     <div>
       {open && (
@@ -66,21 +64,35 @@ const Modal = ({ setOpen, open, title }) => {
                   </p>
                   <div className="flex items-center gap-[23px] w-[100%] justify-center mx-auto mt-[20px]">
                     <div className="p-[3px] border border-black rounded-full">
-                      <MinusIcon className="text-black w-5 font-bold cursor-pointer" />
+                      <MinusIcon
+                        onClick={() => {
+                          if (count > 0) {
+                            setCount(count - 1);
+                          }
+                        }}
+                        className="text-black w-5 font-bold cursor-pointer"
+                      />
                     </div>
                     <div className="p-[4px] border w-[140px] h-[98px] rounded-[10px] flex flex-col gap-0 justify-center items-center">
-                      <p className="text-[45px] font-bold">0</p>
+                      <p className="text-[45px] font-bold">{count}</p>
                       <p className="text-[14px]">MONO</p>
                     </div>
                     <div className="p-[3px] border border-black rounded-full">
-                      <PlusIcon className="text-black w-5 font-bold cursor-pointer" />
+                      <PlusIcon
+                        onClick={() => {
+                          setCount(count + 1);
+                        }}
+                        className="text-black w-5 font-bold cursor-pointer"
+                      />
                     </div>
                   </div>
                   <div className="flex justify-center flex-col text-center mt-[35px]">
                     <div className="flex justify-center gap-[10px] items-center">
                       <img src={Slices} alt="slices-sm" />
-                      <p>You have {4} Slices </p>
-                      <p className="text-[#666666] text-[12px]">({4} MONO)</p>
+                      <p>You have {count} Slices </p>
+                      <p className="text-[#666666] text-[12px]">
+                        ({count} MONO)
+                      </p>
                     </div>
                     <div className="mt-[10px]">
                       <Button
