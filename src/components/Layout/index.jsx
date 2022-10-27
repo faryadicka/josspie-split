@@ -6,8 +6,9 @@ import Twit from "../../assets/img/Twit.png";
 import Insta from "../../assets/img/Insta.png";
 import Tele from "../../assets/img/Tele.png";
 import Wallet from "../../assets/img/wallet.png";
+import Modal from "../../components/Modal/index";
 
-function Layout({ children, isConnect, setIsConnect }) {
+function Layout({ children, isConnect, setIsConnect, open, setOpen, title }) {
   // const [isConnect, setIsConnect] = useState(false);
 
   return (
@@ -66,6 +67,7 @@ function Layout({ children, isConnect, setIsConnect }) {
           </div>
         </div>
       </footer>
+      <Modal open={open} setOpen={setOpen} title={title} />
     </React.Fragment>
   );
 }

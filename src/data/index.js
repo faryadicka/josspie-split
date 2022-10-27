@@ -12,6 +12,7 @@ export const dummy = [
     limit: 42,
     myEarnings: 999999999,
     image: Banner1,
+    label: "Claim",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const dummy = [
     mySlices: 4,
     myEarnings: 0,
     image: Banner2,
+    label: "Stake",
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ export const dummy = [
     limit: 42,
     myEarnings: 0,
     image: Banner3,
+    label: "Unstake",
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ export const dummy = [
     limit: 42,
     myEarnings: 999999999,
     image: Banner1,
+    label: "Claim",
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ export const dummy = [
     mySlices: 4,
     myEarnings: 0,
     image: Banner2,
+    label: "Stake",
   },
   {
     id: 6,
@@ -56,6 +61,7 @@ export const dummy = [
     mySlices: 4,
     myEarnings: 0,
     image: Banner2,
+    label: "Stake",
   },
   {
     id: 7,
@@ -66,6 +72,7 @@ export const dummy = [
     limit: 42,
     myEarnings: 0,
     image: Banner3,
+    label: "Unstake",
   },
   {
     id: 8,
@@ -76,6 +83,7 @@ export const dummy = [
     limit: 42,
     myEarnings: 999999999,
     image: Banner1,
+    label: "Claim",
   },
   {
     id: 9,
@@ -84,6 +92,7 @@ export const dummy = [
     mySlices: 4,
     myEarnings: 0,
     image: Banner2,
+    label: "Stake",
   },
 ];
 

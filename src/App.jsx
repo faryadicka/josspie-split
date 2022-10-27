@@ -12,14 +12,22 @@ function App() {
   const slices = 2;
   const [sortValue, setsortValue] = useState("Popular");
   const [filterValue, setfilterValue] = useState("All");
+  const [title, setTitle] = useState("Stake");
   const [totalCard, setTotalCard] = useState(4);
   const [viewMore, setViewMore] = useState(true);
   const [clickedFilter, setclickedFilter] = useState(false);
   const [clickedSort, setclickedSort] = useState(false);
   const [isConnect, setIsConnect] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
-    <Layout isConnect={isConnect} setIsConnect={setIsConnect}>
+    <Layout
+      isConnect={isConnect}
+      setIsConnect={setIsConnect}
+      open={open}
+      setOpen={setOpen}
+      title={title}
+    >
       <div className="text-center mb-[40px] text-[#222121]">
         <p className="font-bold text-[32px]">
           My Slices{" "}
@@ -50,7 +58,11 @@ function App() {
                     setclickedSort(!clickedSort);
                   }}
                   key={idx}
-                  className="border-b border-[#666666] py-[5px]"
+                  className={`${
+                    sortMenu.length - 1 === idx
+                      ? ""
+                      : "border-b border-[#666666]"
+                  } py-[5px]`}
                 >
                   <p className="cursor-pointer text-[14px]">{item.label}</p>
                 </div>
@@ -80,7 +92,11 @@ function App() {
                     setclickedFilter(!clickedFilter);
                   }}
                   key={idx}
-                  className="border-b border-[#666666] py-[5px]"
+                  className={`${
+                    filterMenu.length - 1 === idx
+                      ? ""
+                      : "border-b border-[#666666]"
+                  } py-[5px]`}
                 >
                   <p className="cursor-pointer">{item.label}</p>
                 </div>
@@ -98,6 +114,8 @@ function App() {
       <div className="mt-[20px] sm:flex sm:flex-wrap sm:justify-evenly">
         {dummy.slice(totalCard).map((item) => (
           <Card
+            open={open}
+            setOpen={setOpen}
             key={item.id}
             image={item.image}
             type={item.type}
@@ -106,6 +124,9 @@ function App() {
             limit={item.limit}
             myEarnings={item.myEarnings}
             mySlices={item.mySlices}
+            setTitle={setTitle}
+            label={item.label}
+            place={item.place}
           />
         ))}
       </div>

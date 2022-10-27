@@ -11,13 +11,17 @@ const Card = ({
   limit,
   myEarnings,
   mySlices,
+  open,
+  setOpen,
+  setTitle,
+  label,
 }) => {
   return (
     <div className="border relative rounded-2xl mb-[12px] sm:w-[30%]">
-      <img src={image} alt="img-banner" />
+      <img src={image} alt="img-banner" style={{ width: "100%" }} />
       <div className="p-[20px]">
         {type === "stake" ? (
-          <div className="flex justify-center flex-col text-center">
+          <div className="flex justify-center flex-col text-center mt-[40px]">
             <div className="flex justify-center gap-[10px]">
               <img src={Slices} alt="slices-sm" />
               <p>You have {mySlices} Slices </p>
@@ -28,7 +32,7 @@ const Card = ({
           </div>
         ) : (
           <div>
-            <p>{place}</p>
+            <p className="font-[500] text-[18px]">{place}</p>
             <div className="flex justify-between items-center">
               <p className="text-[12px]">Total Slices Staked</p>
               <p>{totalSliced} MONO</p>
@@ -49,11 +53,23 @@ const Card = ({
         )}
         <div className="flex justify-center mt-[80px]">
           <Button
-            title="Claim"
+            border={`${type === "unstake" ? "border border-black" : ""}`}
+            text={`${type === "unstake" ? "text-black" : "text-white"}`}
+            setTitle={setTitle}
+            label={label}
+            open={open}
+            setOpen={setOpen}
+            title={`${
+              type === "stake"
+                ? "Stake"
+                : type === "unstake"
+                ? "Unstake"
+                : "Claim"
+            }`}
             background={`${
               type === "stake"
                 ? "bg-[#EB1673]"
-                : type === "unStake"
+                : type === "unstake"
                 ? "bg-white"
                 : "bg-black"
             }`}
