@@ -18,7 +18,7 @@ function App() {
   const [clickedFilter, setclickedFilter] = useState(false);
   const [clickedSort, setclickedSort] = useState(false);
   const [isConnect, setIsConnect] = useState(false);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <Layout

@@ -5,7 +5,7 @@ import Slices from "../../assets/img/slices-sm.png";
 import Button from "../Button";
 
 const Modal = ({ setOpen, open, title }) => {
-  const [count, setCount] = React.useState(4);
+  const [count, setCount] = React.useState(0);
 
   return (
     <div>
@@ -80,7 +80,9 @@ const Modal = ({ setOpen, open, title }) => {
                     <div className="p-[3px] border border-black rounded-full">
                       <PlusIcon
                         onClick={() => {
-                          setCount(count + 1);
+                          if (count < 4) {
+                            setCount(count + 1);
+                          }
                         }}
                         className="text-black w-5 font-bold cursor-pointer"
                       />
@@ -89,10 +91,8 @@ const Modal = ({ setOpen, open, title }) => {
                   <div className="flex justify-center flex-col text-center mt-[35px]">
                     <div className="flex justify-center gap-[10px] items-center">
                       <img src={Slices} alt="slices-sm" />
-                      <p>You have {count} Slices </p>
-                      <p className="text-[#666666] text-[12px]">
-                        ({count} MONO)
-                      </p>
+                      <p>You have {4} Slices </p>
+                      <p className="text-[#666666] text-[12px]">({4} MONO)</p>
                     </div>
                     <div className="mt-[10px]">
                       <Button
