@@ -8,9 +8,14 @@ import Tele from "../../assets/img/Tele.png";
 import Wallet from "../../assets/img/wallet.png";
 import Modal from "../../components/Modal/index";
 
-function Layout({ children, isConnect, open, setOpen, title, handleConnectWallet }) {
-  // const [isConnect, setIsConnect] = useState(false);
-
+function Layout({
+  children,
+  isConnect,
+  open,
+  setOpen,
+  title,
+  handleConnectWallet,
+}) {
   return (
     <React.Fragment>
       <nav className="font-inter p-5 md:p-10 border-b-4 drop-shadow-[5px]">

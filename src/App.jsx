@@ -59,35 +59,6 @@ function App() {
                   <ChevronDownIcon className="cursor-pointer" width={15} />
                 </div>
               </div>
-              {/* {!clickedSort && (
-                <div className="flex items-center justify-between">
-                  <p>{sortValue}</p>
-                  <div
-                    onClick={() => {
-                      setclickedSort(!clickedSort);
-                    }}
-                  >
-                    <ChevronDownIcon className="cursor-pointer" width={15} />
-                  </div>
-                </div>
-              )} */}
-              {/* {clickedSort &&
-                sortMenu.map((item, idx) => (
-                  <div
-                    onClick={() => {
-                      setsortValue(item.label);
-                      setclickedSort(!clickedSort);
-                    }}
-                    key={idx}
-                    className={`${
-                      sortMenu.length - 1 === idx
-                        ? ""
-                        : "border-b border-[#666666]"
-                    } py-[5px]`}
-                  >
-                    <p className="cursor-pointer text-[14px]">{item.label}</p>
-                  </div>
-                ))} */}
             </div>
             {!clickedSort && (
               <div className="border border-black p-[10px] mt-[10px] absolute z-10 bg-white w-60 rounded-lg">
@@ -123,35 +94,6 @@ function App() {
                   <ChevronDownIcon className="cursor-pointer" width={15} />
                 </div>
               </div>
-              {/* {!clickedFilter && (
-                <div className="flex items-center justify-between">
-                  <p>{filterValue}</p>
-                  <div
-                    onClick={() => {
-                      setclickedFilter(!clickedFilter);
-                    }}
-                  >
-                    <ChevronDownIcon className="cursor-pointer" width={15} />
-                  </div>
-                </div>
-              )} */}
-              {/* {clickedFilter &&
-                filterMenu.map((item, idx) => (
-                  <div
-                    onClick={() => {
-                      setfilterValue(item.label);
-                      setclickedFilter(!clickedFilter);
-                    }}
-                    key={idx}
-                    className={`${
-                      filterMenu.length - 1 === idx
-                        ? ""
-                        : "border-b border-[#666666]"
-                    } py-[5px]`}
-                  >
-                    <p className="cursor-pointer">{item.label}</p>
-                  </div>
-                ))} */}
             </div>
             {!clickedFilter && (
               <div className="border border-black p-[10px] mt-[10px] absolute z-10 bg-white w-60 rounded-lg">
@@ -183,29 +125,6 @@ function App() {
             >
               <AdjustmentsHorizontalIcon width={15} />
               <p>Filters</p>
-              {/* {clickedFilter && (
-                <>
-                  <AdjustmentsHorizontalIcon width={15} />
-                  <p>Filters</p>
-                </>
-              )} */}
-              {/* {!clickedFilter &&
-                filterMenu.map((item, idx) => (
-                  <div
-                    onClick={() => {
-                      setfilterValue(item.label);
-                      setclickedFilter(!clickedFilter);
-                    }}
-                    key={idx}
-                    className={`${
-                      filterMenu.length - 1 === idx
-                        ? ""
-                        : "border-b border-[#666666]"
-                    } py-[5px]`}
-                  >
-                    <p className="cursor-pointer">{item.label}</p>
-                  </div>
-                ))} */}
             </div>
           </div>
           {!clickedFilter && (
