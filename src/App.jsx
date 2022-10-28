@@ -49,7 +49,17 @@ function App() {
           <div className="w-60">
             <p className="text-[#666666] text-[12px] sm:block mb-2">Sort by</p>
             <div className="border border-black rounded-xl p-2 ">
-              {!clickedSort && (
+              <div className="flex items-center justify-between">
+                <p>{sortValue}</p>
+                <div
+                  onClick={() => {
+                    setclickedSort(!clickedSort);
+                  }}
+                >
+                  <ChevronDownIcon className="cursor-pointer" width={15} />
+                </div>
+              </div>
+              {/* {!clickedSort && (
                 <div className="flex items-center justify-between">
                   <p>{sortValue}</p>
                   <div
@@ -60,8 +70,8 @@ function App() {
                     <ChevronDownIcon className="cursor-pointer" width={15} />
                   </div>
                 </div>
-              )}
-              {clickedSort &&
+              )} */}
+              {/* {clickedSort &&
                 sortMenu.map((item, idx) => (
                   <div
                     onClick={() => {
@@ -77,13 +87,43 @@ function App() {
                   >
                     <p className="cursor-pointer text-[14px]">{item.label}</p>
                   </div>
-                ))}
+                ))} */}
             </div>
+            {!clickedSort && (
+              <div className="border border-black p-[10px] mt-[10px] absolute z-10 bg-white w-60 rounded-lg">
+                {sortMenu.map((item, idx) => (
+                  <p
+                    onClick={() => {
+                      setsortValue(item.label);
+                      setclickedSort(!clickedFilter);
+                    }}
+                    key={idx}
+                    className={`${
+                      filterMenu.length - 1 === idx
+                        ? ""
+                        : "border-b border-[#666666]"
+                    } py-[5px] cursor-pointer`}
+                  >
+                    {item.label}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
           <div className="sm:w-60 sm:block hidden">
             <p className="text-[#666666] text-[12px] mb-2">Filter by</p>
             <div className="border border-black rounded-xl p-2">
-              {!clickedFilter && (
+              <div className="flex items-center justify-between">
+                <p>{filterValue}</p>
+                <div
+                  onClick={() => {
+                    setclickedFilter(!clickedFilter);
+                  }}
+                >
+                  <ChevronDownIcon className="cursor-pointer" width={15} />
+                </div>
+              </div>
+              {/* {!clickedFilter && (
                 <div className="flex items-center justify-between">
                   <p>{filterValue}</p>
                   <div
@@ -94,8 +134,8 @@ function App() {
                     <ChevronDownIcon className="cursor-pointer" width={15} />
                   </div>
                 </div>
-              )}
-              {clickedFilter &&
+              )} */}
+              {/* {clickedFilter &&
                 filterMenu.map((item, idx) => (
                   <div
                     onClick={() => {
@@ -111,25 +151,45 @@ function App() {
                   >
                     <p className="cursor-pointer">{item.label}</p>
                   </div>
-                ))}
+                ))} */}
             </div>
+            {!clickedFilter && (
+              <div className="border border-black p-[10px] mt-[10px] absolute z-10 bg-white w-60 rounded-lg">
+                {filterMenu.map((item, idx) => (
+                  <p
+                    onClick={() => {
+                      setfilterValue(item.label);
+                      setclickedFilter(!clickedFilter);
+                    }}
+                    key={idx}
+                    className={`${
+                      filterMenu.length - 1 === idx
+                        ? ""
+                        : "border-b border-[#666666]"
+                    } py-[5px] cursor-pointer`}
+                  >
+                    {item.label}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
           <div className="w-24">
             <div
               onClick={() => {
                 setclickedFilter(!clickedFilter);
               }}
-              className={`border border-black rounded-xl ${
-                !clickedFilter ? "flex-col text-[12px]" : ""
-              } p-2 flex items-center justify-evenly sm:hidden`}
+              className={`border border-black rounded-xl p-2 flex items-center justify-evenly sm:hidden`}
             >
-              {clickedFilter && (
+              <AdjustmentsHorizontalIcon width={15} />
+              <p>Filters</p>
+              {/* {clickedFilter && (
                 <>
                   <AdjustmentsHorizontalIcon width={15} />
                   <p>Filters</p>
                 </>
-              )}
-              {!clickedFilter &&
+              )} */}
+              {/* {!clickedFilter &&
                 filterMenu.map((item, idx) => (
                   <div
                     onClick={() => {
@@ -145,9 +205,29 @@ function App() {
                   >
                     <p className="cursor-pointer">{item.label}</p>
                   </div>
-                ))}
+                ))} */}
             </div>
           </div>
+          {!clickedFilter && (
+            <div className="border border-black p-[10px] mt-[10px] absolute z-10 bg-white w-60 rounded-lg sm:hidden top-[260px] right-[21px]">
+              {filterMenu.map((item, idx) => (
+                <p
+                  onClick={() => {
+                    setfilterValue(item.label);
+                    setclickedFilter(!clickedFilter);
+                  }}
+                  key={idx}
+                  className={`${
+                    filterMenu.length - 1 === idx
+                      ? ""
+                      : "border-b border-[#666666]"
+                  } py-[5px] cursor-pointer`}
+                >
+                  {item.label}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <div class="flex justify-center items-center flex-col">
