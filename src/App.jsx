@@ -6,7 +6,9 @@ import {
 import "./App.css";
 import Layout from "./components/Layout";
 import Card from "./components/Card";
+import ImgSlices from "../src/assets/img/slices-img.png";
 import { dummy, filterMenu, sortMenu } from "./data";
+import Button from "./components/Button";
 
 function App() {
   const slices = 2;
@@ -19,11 +21,17 @@ function App() {
   const [clickedSort, setclickedSort] = useState(false);
   const [isConnect, setIsConnect] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mySlices, setMySlices] = useState([]);
+
+  const handleConnectWallet = () => {
+    setIsConnect(!isConnect);
+    setMySlices(dummy);
+  };
 
   return (
     <Layout
       isConnect={isConnect}
-      setIsConnect={setIsConnect}
+      handleConnectWallet={handleConnectWallet}
       open={open}
       setOpen={setOpen}
       title={title}
@@ -31,88 +39,140 @@ function App() {
       <div className="text-center mb-[40px] text-[#222121]">
         <p className="font-bold text-[32px]">
           My Slices{" "}
-          <span className="text-[14px] text-[#666666]">({dummy.length})</span>
+          <span className="text-[14px] text-[#666666]">
+            ({mySlices.length})
+          </span>
         </p>
       </div>
-      <div className="flex w-full justify-between sm:justify-start gap-[13px] sm:items-start items-end sm:mx-[25px]">
-        <div className="w-60">
-          <p className="text-[#666666] text-[12px] sm:block mb-2">Sort by</p>
-          <div className="border border-black rounded-xl p-2 ">
-            {!clickedSort && (
-              <div className="flex items-center justify-between">
-                <p>{sortValue}</p>
-                <div
-                  onClick={() => {
-                    setclickedSort(!clickedSort);
-                  }}
-                >
-                  <ChevronDownIcon className="cursor-pointer" width={15} />
+      {mySlices.length > 0 ? (
+        <div className="flex w-full justify-between sm:justify-start gap-[13px] sm:items-start items-end sm:mx-[25px]">
+          <div className="w-60">
+            <p className="text-[#666666] text-[12px] sm:block mb-2">Sort by</p>
+            <div className="border border-black rounded-xl p-2 ">
+              {!clickedSort && (
+                <div className="flex items-center justify-between">
+                  <p>{sortValue}</p>
+                  <div
+                    onClick={() => {
+                      setclickedSort(!clickedSort);
+                    }}
+                  >
+                    <ChevronDownIcon className="cursor-pointer" width={15} />
+                  </div>
                 </div>
-              </div>
-            )}
-            {clickedSort &&
-              sortMenu.map((item, idx) => (
-                <div
-                  onClick={() => {
-                    setsortValue(item.label);
-                    setclickedSort(!clickedSort);
-                  }}
-                  key={idx}
-                  className={`${
-                    sortMenu.length - 1 === idx
-                      ? ""
-                      : "border-b border-[#666666]"
-                  } py-[5px]`}
-                >
-                  <p className="cursor-pointer text-[14px]">{item.label}</p>
+              )}
+              {clickedSort &&
+                sortMenu.map((item, idx) => (
+                  <div
+                    onClick={() => {
+                      setsortValue(item.label);
+                      setclickedSort(!clickedSort);
+                    }}
+                    key={idx}
+                    className={`${
+                      sortMenu.length - 1 === idx
+                        ? ""
+                        : "border-b border-[#666666]"
+                    } py-[5px]`}
+                  >
+                    <p className="cursor-pointer text-[14px]">{item.label}</p>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div className="sm:w-60 sm:block hidden">
+            <p className="text-[#666666] text-[12px] mb-2">Filter by</p>
+            <div className="border border-black rounded-xl p-2">
+              {!clickedFilter && (
+                <div className="flex items-center justify-between">
+                  <p>{filterValue}</p>
+                  <div
+                    onClick={() => {
+                      setclickedFilter(!clickedFilter);
+                    }}
+                  >
+                    <ChevronDownIcon className="cursor-pointer" width={15} />
+                  </div>
                 </div>
-              ))}
+              )}
+              {clickedFilter &&
+                filterMenu.map((item, idx) => (
+                  <div
+                    onClick={() => {
+                      setfilterValue(item.label);
+                      setclickedFilter(!clickedFilter);
+                    }}
+                    key={idx}
+                    className={`${
+                      filterMenu.length - 1 === idx
+                        ? ""
+                        : "border-b border-[#666666]"
+                    } py-[5px]`}
+                  >
+                    <p className="cursor-pointer">{item.label}</p>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div className="w-24">
+            <div
+              onClick={() => {
+                setclickedFilter(!clickedFilter);
+              }}
+              className={`border border-black rounded-xl ${
+                !clickedFilter ? "flex-col text-[12px]" : ""
+              } p-2 flex items-center justify-evenly sm:hidden`}
+            >
+              {clickedFilter && (
+                <>
+                  <AdjustmentsHorizontalIcon width={15} />
+                  <p>Filters</p>
+                </>
+              )}
+              {!clickedFilter &&
+                filterMenu.map((item, idx) => (
+                  <div
+                    onClick={() => {
+                      setfilterValue(item.label);
+                      setclickedFilter(!clickedFilter);
+                    }}
+                    key={idx}
+                    className={`${
+                      filterMenu.length - 1 === idx
+                        ? ""
+                        : "border-b border-[#666666]"
+                    } py-[5px]`}
+                  >
+                    <p className="cursor-pointer">{item.label}</p>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
-        <div className="sm:w-60 sm:block hidden">
-          <p className="text-[#666666] text-[12px] mb-2">Filter by</p>
-          <div className="border border-black rounded-xl p-2">
-            {!clickedFilter && (
-              <div className="flex items-center justify-between">
-                <p>{filterValue}</p>
-                <div
-                  onClick={() => {
-                    setclickedFilter(!clickedFilter);
-                  }}
-                >
-                  <ChevronDownIcon className="cursor-pointer" width={15} />
-                </div>
-              </div>
-            )}
-            {clickedFilter &&
-              filterMenu.map((item, idx) => (
-                <div
-                  onClick={() => {
-                    setfilterValue(item.label);
-                    setclickedFilter(!clickedFilter);
-                  }}
-                  key={idx}
-                  className={`${
-                    filterMenu.length - 1 === idx
-                      ? ""
-                      : "border-b border-[#666666]"
-                  } py-[5px]`}
-                >
-                  <p className="cursor-pointer">{item.label}</p>
-                </div>
-              ))}
+      ) : (
+        <div class="flex justify-center items-center flex-col">
+          <div className="">
+            <img src={ImgSlices} alt="slices" />
+          </div>
+          <p class="text-[35px] font-bold">Buy Your First Slice</p>
+          <div className="w-[80%] sm:w-[30%] text-[#666666]">
+            <p className="text-center">
+              Joss buys a property (Pie) and sales shares in the future profit
+              the property will be generating (Slices)
+            </p>
+          </div>
+          <div className="mt-[20px]">
+            <Button
+              text="text-white"
+              background="bg-[#EB1673]"
+              isPosition={false}
+              title="Explore Pies"
+            />
           </div>
         </div>
-        <div className="w-24">
-          <div></div>
-          <div className="border border-black rounded-xl p-2 flex items-center justify-evenly sm:hidden">
-            <AdjustmentsHorizontalIcon width={15} />
-            <p>Filters</p>
-          </div>
-        </div>
-      </div>
+      )}
       <div className="mt-[20px] sm:flex sm:flex-wrap sm:justify-evenly">
-        {dummy.slice(totalCard).map((item) => (
+        {mySlices.slice(totalCard).map((item) => (
           <Card
             open={open}
             setOpen={setOpen}
@@ -130,7 +190,7 @@ function App() {
           />
         ))}
       </div>
-      {viewMore && (
+      {viewMore && mySlices.length > 0 && (
         <div className="flex justify-center">
           <button
             onClick={() => {

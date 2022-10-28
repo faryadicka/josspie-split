@@ -8,7 +8,7 @@ import Tele from "../../assets/img/Tele.png";
 import Wallet from "../../assets/img/wallet.png";
 import Modal from "../../components/Modal/index";
 
-function Layout({ children, isConnect, setIsConnect, open, setOpen, title }) {
+function Layout({ children, isConnect, open, setOpen, title, handleConnectWallet }) {
   // const [isConnect, setIsConnect] = useState(false);
 
   return (
@@ -23,9 +23,7 @@ function Layout({ children, isConnect, setIsConnect, open, setOpen, title }) {
             {!isConnect ? (
               <>
                 <li
-                  onClick={() => {
-                    setIsConnect(!isConnect);
-                  }}
+                  onClick={handleConnectWallet}
                   className="border border-black p-2 rounded-full cursor-pointer"
                 >
                   <div className="flex items-center gap-[5px]">
